@@ -8,7 +8,16 @@ def check_import(packagename):
     else:
         return False
 
-packages = {'Bio':'biopython', 'sklearn':'scikit-learn', 'pandas':'pandas'}
+packages = {'Bio':'biopython', 
+            'sklearn':'scikit-learn', 
+            'pandas':'pandas',
+            'matplotlib':'matplotlib',
+            'seaborn':'seaborn',
+            'numpy':'numpy',
+            'scipy':'scipy',
+            'jupyter':'jupyter',
+            'ipykernel':'ipython',
+            'bokeh':'bokeh'}
 
 for p in packages:
     try:
