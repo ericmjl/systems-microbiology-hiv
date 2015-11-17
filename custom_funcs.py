@@ -23,6 +23,16 @@ def init_seaborn(style='white', context='notebook'):
     seaborn.set_style(style)
     seaborn.set_context(context)
 
+def read_consensus(handle):
+    """
+    Reads in the consensus sequence, makes a map of position to letter.
+    """
+
+    consensus = SeqIO.read(handle, 'fasta')
+    consensus_map = {i:letter for i, letter in enumerate(str(consensus.seq))}
+
+    return consensus_map
+
 def read_data(handle, n_data_cols):
     """
     Reads in the genotype-phenotype data.
