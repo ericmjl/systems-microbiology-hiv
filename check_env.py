@@ -8,6 +8,7 @@ def check_import(packagename):
     else:
         return False
 
+num_correct = 0
 packages = {'Bio':'biopython', 
             'sklearn':'scikit-learn', 
             'pandas':'pandas',
@@ -22,6 +23,7 @@ packages = {'Bio':'biopython',
 for p in packages:
     try:
         assert check_import(p)
+        num_correct += 1
     except AssertionError:
         print('{0} not present. Please install using the command: \n\
             \n\
@@ -30,3 +32,6 @@ for p in packages:
             or \n\
             \n\
             pip install {0}'.format(packages[p]))
+
+if num_correct == len(packages):
+	print('All necessary packages are installed. Good to go!')
