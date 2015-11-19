@@ -216,21 +216,19 @@ def binarize_seqfeature(X):
     Returns:
     ========
     - binarized:     (pandas DataFrame) a binarized sequence feature matrix with columns corresponding to particular amino acids at each position.
-    - binarizers:    (dictionary) a dictionary of binarizer objects for each position.
     """
-    binarized = pd.DataFrame()
-    binarizers = dict()
+    lb = LabelBinarizer()
+    lb.fit(list('CHIMSVAGLPTRFYWDNEQK'))
+
+    X_binarized = pd.DataFrame()
+
     for col in X.columns:
-        lb = LabelBinarizer()
-        binarized_cols = lb.fit_transform(X[col])
-        if len(lb.classes_) == 2:
-            binarized[col] = pd.Series(binarized_cols[:,0])
-        else:
-            for i,c in enumerate(lb.classes_):
-                binarized[col + '_' + c] = binarized_cols[:,i]
-        binarizers[col] = lb
-                
-    return binarized, binarizers
+        binarized_cols = lb.transform(X[col])
+
+        for i, c in enumerate(lb.classes_):
+            X_binarized[str(col) + '_' + str(c)] = binarized_cols[:,i]
+            
+    return X_binarized
 
 def plot_Y_histogram(Y, drug_abbr, figsize=None):
     """
