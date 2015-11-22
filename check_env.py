@@ -18,7 +18,9 @@ packages = {'Bio':'biopython',
             'scipy':'scipy',
             'jupyter':'jupyter',
             'ipykernel':'ipython',
-            'bokeh':'bokeh'}
+            'bokeh':'bokeh',
+            'joblib':'joblib',
+            'Levenshtein':'python-Levenshtein'}
 
 for p in packages:
     try:
@@ -31,7 +33,8 @@ for p in packages:
             \n\
             or \n\
             \n\
-            pip install {0}'.format(packages[p]))
+            pip install {0}\n\
+            \n'.format(packages[p]))
 
 if num_correct == len(packages):
 	print('All necessary packages are installed. Good to go!')
