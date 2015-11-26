@@ -1,7 +1,6 @@
 # Ignore checkpoint files
 .ipynb_checkpoints/
 csv/*.tsv
-sequences/proteases_downsampled.fasta
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
